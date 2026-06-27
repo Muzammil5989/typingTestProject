@@ -18,8 +18,13 @@
 a{
     text-decoration: none;
 }
+body,html{
+    height: 100%;
+    width:100%;
+}
 body{
     background-color:honeydew;
+    position: relative;
 }
 .logoHeading{
      font-family: "Croissant One", serif;
@@ -387,6 +392,7 @@ hr{
     height:100%;
     width:100%;
     top:0;
+    display:none;
     left:0;
     backdrop-filter:blur(8px);
     transition: all 0.3s ease;

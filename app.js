@@ -56,17 +56,17 @@ inputDiv.addEventListener("input",(e)=>{
 
 function checkAndCompare(input){
 
-    let div=document.querySelector('.textDisplay')
-    div.children[currentIndex].children[words].style.transition="all 0.1s ease-in";
-    if(input==" " && input==div.children[currentIndex].children[words].textContent){
+    
+    wordDiv.children[currentIndex].children[words].style.transition="all 0.1s ease-in";
+    if(input==" " && input==wordDiv.children[currentIndex].children[words].textContent){
        console.log("space printed");
         typingSound.src="./sounds/2.mp3"
         typingSound.play();
        currentIndex++;
        words=0;
     }
-    else if(input==div.children[currentIndex].children[words].textContent){
-        div.children[currentIndex].children[words].style.color="green";
+    else if(input==wordDiv.children[currentIndex].children[words].textContent){
+        wordDiv.children[currentIndex].children[words].style.color="green";
         words++;
          typingSound.src="./sounds/2.mp3"
         typingSound.play();
@@ -75,10 +75,10 @@ function checkAndCompare(input){
     }else{
         typingSound.src="./sounds/typing-error.mp3"
         typingSound.play();
-        div.children[currentIndex].children[words].style.color="red";
-        div.children[currentIndex].children[words].style.backgroundColor="black";
-        div.children[currentIndex].children[words].style.display = "inline-block";
-        div.children[currentIndex].children[words].style.transform="scale(1.3)";
+        wordDiv.children[currentIndex].children[words].style.color="red";
+        wordDiv.children[currentIndex].children[words].style.backgroundColor="black";
+        wordDiv.children[currentIndex].children[words].style.display = "inline-block";
+        wordDiv.children[currentIndex].children[words].style.transform="scale(1.3)";
          console.log("wrong input");
     }
 
@@ -87,11 +87,43 @@ let timerStatDiv=document.querySelector('#timerStat');
 let timer = document.querySelector('#timerStat>.statValue>p>span');
 timer.style.transition="all 0.2s ease-in";
 
+
+
+let timeDuration=+timer.textContent;
+let timerSwitch=false;
+
+let countDownTimer = null;
+let timerOutId = null;
 let durationDivs=document.querySelectorAll('.durationDivsChild')
 let durationArray=Array.from(durationDivs);
 for(let duration of durationArray){
     duration.addEventListener('click',(e)=>{
         timer.textContent=e.target.textContent;
+        timeDuration= +timer.textContent;
+        inputDiv.focus();
+        clearInterval(countDownTimer);
+        clearTimeout(timerOutId);
+        countDownTimer=setInterval(()=>{
+        timer.textContent-=1;
+        if(timer.textContent<=10){
+            typingSound.src="./sounds/10sec.mp3"
+            typingSound.play();
+            timerStatDiv.style.borderColor="red";
+           Array.from(timerStatDiv.children).forEach(child=>{
+            child.style.color="red"
+           });
+        }
+    },1000)
+    
+    timerOutId = setTimeout(() => {
+        clearInterval(countDownTimer);
+         typingSound.src="./sounds/whatsapp-send.mp3"
+         typingSound.play();
+         resultDiv.style.display="block";
+         gifDiv.style.display="block"
+         
+    }, timeDuration*1000);
+        
     })
 }
 
@@ -99,6 +131,31 @@ const customButton=document.querySelector("#customButton");
 const customInput=document.querySelector("#customInput")
 customButton.addEventListener('click',(e)=>{
     timer.textContent=customInput.textContent;
+    timeDuration= +timer.textContent;
+    clearInterval(countDownTimer);
+    clearTimeout(timerOutId);
+    inputDiv.focus();
+    countDownTimer=setInterval(()=>{
+        timer.textContent-=1;
+        if(timer.textContent<=10){
+            typingSound.src="./sounds/10sec.mp3"
+            typingSound.play();
+            timerStatDiv.style.borderColor="red";
+           Array.from(timerStatDiv.children).forEach(child=>{
+            child.style.color="red"
+           }); 
+        }
+    },1000)
+    
+    timerOutId = setTimeout(() => {
+        clearInterval(countDownTimer);
+         typingSound.src="./sounds/whatsapp-send.mp3"
+         typingSound.play();
+         resultDiv.style.display="block";
+         gifDiv.style.display="block"
+         
+    }, timeDuration*1000);
+
 })  
 
 
@@ -107,33 +164,17 @@ const overlayDiv = document.querySelector("#overlayDiv");
 const closeButton=document.querySelector("#popCloseBtn");
 closeButton.addEventListener("click",()=>{
     closeButton.parentElement.remove();
-    overlayDiv.style.display="none";
+    overlayDiv.remove();
 })
 const startBtn=document.querySelector("#startBtn");
 startBtn.addEventListener("click",()=>{
     startBtn.parentElement.remove();
-    overlayDiv.style.display="none";
+    overlayDiv.remove();
+
 })
 
 
-let timeDuration=+timer.textContent;
-// const countDownTimer=setInterval(()=>{
-//     timer.textContent-=1;
-//     if(timer.textContent<=10){
-//         typingSound.src="./sounds/10sec.mp3"
-//         typingSound.play();
-//         timerStatDiv.style.borderColor="red";
-//        Array.from(timerStatDiv.children).forEach(child=>{
-//         child.style.color="red"
-//        });
-//     }
-// },1000)
 
-// setTimeout(() => {
-//     clearInterval(countDownTimer);
-//      typingSound.src="./sounds/whatsapp-send.mp3"
-//      typingSound.play();
-// }, timeDuration*1000);
 
 
 
