@@ -252,36 +252,30 @@ hr{
     align-items: center;
     transition: all 0.4s ease-in;
     z-index:90;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
 
 }
 #popupHeading{
     color:crimson;
+    font-size:36px;
     margin:12px 0px 24px 0;
     text-align: center;
-    
+   
+}
+#popHeading2{
+    font-size:22px;
+    margin-top:15px;
+    color:gainsboro;
 }
 #popupPara{
     color:honeydew;
-    text-align:center;
-    line-height: 22px;
-}
-#closeButton{
-    padding:8px 16px;
-    align-self:flex-end;
-    transition:all 0.2s ease-in;
-    background-color: transparent;
-    outline:none;
-    border:none;
-    
-}
-#closeButtonIcon{
-    color:cornsilk;
     font-size:18px;
+
 }
-#closeButton:hover{
-    cursor:pointer;
-    transform: scale(1.2);
-}
+
 
 #startBtn{
     background-color: transparent;
@@ -305,20 +299,16 @@ hr{
     cursor:pointer;
 }
 
-#popup{
-    filter:none;
-}
-#popHeading2{
-    margin-top:15px;
-    color:gainsboro;
-}
+
+
 #popInput{
-    padding:6px 12px;
+    padding:12px 20px;
     width:100%;
     outline:none;
     border:none;
     border-radius:5px;
-    margin:8px 0;
+    font-size:18px;
+    margin:18px 0;
     background-color:honeydew;
 }
 #difficultyDiv{
@@ -328,20 +318,67 @@ hr{
     align-items: center;
     justify-content: space-between;
 }
+#difficultyDiv>h3{
+    font-size:18px;
+    color:honeydew;
+}
 #difficulty{
     padding: 8px 14px;
     border-radius:4px;
     outline:none;
-    background-color:gray;
-    color:white;
+    background-color:honeydew;
+    color:grey;
     font-weight:bold;
-
+    border:none;
+    font-size: 18px;
+    transition: all 0.2s ease-in;
 }
-#popHeading3{
-    color:beige;
+#difficulty:hover{
+    cursor: pointer;   
+}
+#difficulty>option{
+    background-color:honeydew;
+    font-size:18px;
     font-weight: bold;
+    padding:8px 14px;
+    width:150px;
+    border:1px solid coral;
+    transition: all 0.2s ease-in;
+    outline:none;
+    text-align: center;
+}
+#difficulty>option:hover{
+    color:red;
+    background-color:honeydew;
+    cursor: pointer;
 }
 
+#popCloseBtn{
+    align-self: center;
+    display:block;
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    outline:none;
+    border:none;
+    background-color:transparent;
+    transition:all 0.3s ease-in;
+    position:absolute;
+    top:8px;
+    right:8px;
+    opacity:0.7;
+}
+#popCloseBtn>i{
+    font-size:18px;
+    font-weight:bold;
+}
+#popCloseBtn:hover{
+    cursor:pointer;
+    transform: scale(1.2);
+    opacity:1;
+}
 
 
 /* overlay (blur) div */
@@ -376,40 +413,50 @@ hr{
     justify-content: center;
     gap:54px;
 }
-
+#resultDiv>h2{
+    font-size:28px;
+}
 #resultDiv>h2>span{
     color:crimson;
 }
 
 
-#gifDiv{
-    position: absolute;
-    height:100%;
-    width:100%;
-    top:0;
-    left:0;
-    background-image:url("https://i.giphy.com/Ae0WuPj6JV356Z1zYv.webp");
-    background-size:cover;
-    background-repeat:no-repeat;
-}
+
 #resultStats{
     border:1px solid white;
     padding:16px 28px;
     border-radius:8px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
 }
 #resultStats>div{
-    padding:12px 20px;
-    border:1px solid transparent;
+    padding:8px 20px;
+    border:3px solid transparent;
+    border-radius:8px;
     transition:all 0.3s ease-in;
+}
+#resultStats>div>h3{
+    font-size:18px;
 }
 #resultStats>div:hover{
     cursor:pointer;
+    background-color: honeydew;
+    color:black;
  
 }
 #resultStats *{
       font-family: "Eagle Lake", serif;
 }
-
+#wordsResult:hover{
+    border-color: red;
+}
+#accuracyResult:hover{
+    border-color: cornflowerblue;
+}
+#timeTaken:hover{
+    border-color: green;
+}
 /* resultCloseButton */
 #resultCloseBtn{
     align-self: center;
@@ -419,12 +466,10 @@ hr{
     display:flex;
     align-items:center;
     justify-content: center;
+    border:none;
     outline:none;
-    border:1px solid transparent;
-    border-radius:4px;
     background-color:transparent;
     transition:all 0.3s ease-in;
-    border-radius:50%;
     position:absolute;
     top:8px;
     right:8px;
@@ -432,7 +477,7 @@ hr{
 
 }
 #resultCloseBtn:hover{
-    border-color:grey;
+    transform: scale(1.2);
     cursor:pointer;
     opacity:1;
 }
@@ -441,4 +486,16 @@ hr{
     color:white;
     font-weight:bold;
     
+}
+
+/* gifDiv */
+#gifDiv{
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background-image:url("https://i.giphy.com/Ae0WuPj6JV356Z1zYv.webp");
+    background-size:cover;
+    background-repeat:no-repeat;
 }

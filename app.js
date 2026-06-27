@@ -104,79 +104,16 @@ customButton.addEventListener('click',(e)=>{
 
 
 
-const popup=document.createElement("div");
-popup.classList.add("popup")
-popup.id="popup";
-const closeButton=document.createElement("button");
-const closeButtonIcon=document.createElement("i");
-closeButtonIcon.classList.add("fa-solid", "fa-x")
-closeButtonIcon.id="closeButtonIcon";
-closeButton.classList.add("closeButton")
-closeButton.id="closeButton";
-closeButton.append(closeButtonIcon);
-const heading=document.createElement("h1");
-heading.textContent="Welcome to Typing Test"
-heading.classList.add("popup-heading");
-heading.id='popupHeading';
-const para=document.createElement("p");
-para.classList.add("popup-para")
-para.id='popupPara';
-para.textContent="Test your typing skills with 30 sec, 60 sec, 120 sec and custom time duration."
-popup.style.position="absolute";
-popup.style.top="50%"
-popup.style.left="50%"
-popup.style.transform="translate(-50%,-50%)"
-const startBtn = document.createElement("button");
-startBtn.textContent="Proceed";
-startBtn.classList.add("startBtn");
-startBtn.id="startBtn"
-const popHeading2=document.createElement("h2");
-popHeading2.textContent="Tell us more about yourself";
-popHeading2.classList.add("popHeading2")
-popHeading2.id="popHeading2"
-const popInput=document.createElement("input")
-popInput.classList.add("popInput")
-popInput.id="popInput"
-popInput.setAttribute('placeholder','Enter your name');
-const difficultyDiv=document.createElement("div")
-difficultyDiv.classList.add("difficultyDiv")
-difficultyDiv.id="difficultyDiv"
-const popHeading3=document.createElement("h3");
-popHeading3.textContent="Select Difficulty:";
-popHeading3.classList.add("popHeading3")
-popHeading3.id="popHeading3"
-const difficulty = document.createElement("select");
-difficulty.id="difficulty";
-const easyDifficulty=document.createElement("option")
-easyDifficulty.textContent="Easy";
-easyDifficulty.value="Easy"
-const mediumDifficulty=document.createElement("option")
-mediumDifficulty.textContent="Medium";
-mediumDifficulty.value="Medium"
-const hardDifficulty=document.createElement("option")
-hardDifficulty.textContent="Hard";
-hardDifficulty.value="Hard"
-
-difficulty.append(easyDifficulty,mediumDifficulty,hardDifficulty)
-
-difficultyDiv.append(popHeading3,difficulty)
-
-popup.append(closeButton,heading,para,startBtn,popHeading2,popInput,difficultyDiv);
-
-document.body.append(popup)
-const overlayDiv=document.createElement('div');
-overlayDiv.id="overlayDiv"
-overlayDiv.classList.add("overlayDiv");
-document.body.append(overlayDiv);
 
 
 
-
-
+const overlayDiv = document.querySelector("#overlayDiv");
+const closeButton=document.querySelector("#popCloseBtn");
 closeButton.addEventListener("click",()=>{
     closeButton.parentElement.remove();
     overlayDiv.style.display="none";
 })
+const startBtn=document.querySelector("#startBtn");
 startBtn.addEventListener("click",()=>{
     startBtn.parentElement.remove();
     overlayDiv.style.display="none";
@@ -205,72 +142,46 @@ let timeDuration=+timer.textContent;
 
 
 
-// Result div popup
-const resultDiv = document.createElement("div");
-resultDiv.id = "resultDiv";
-resultDiv.classList.add("resultDiv");
-
+// Result div popup section
+const resultDiv=document.querySelector("#resultDiv");
 let typingSpeed=34;
-const heading2=document.createElement("h2");
+const resultHeadingSpan1=document.querySelector(".resultHeading1>span");
+const resultHeadingSpan2=document.querySelector(".resultHeading2>span");
+
 let typingCharacter="Turtle"
-heading2.textContent="You're a ";
-const span=document.createElement("span")
-span.textContent=typingCharacter;
+resultHeadingSpan1.textContent=typingCharacter;
+resultHeadingSpan2.textContent=typingSpeed;
 
-
-
-heading2.append(span);
-
-
-const headingOther=document.createElement("h2");
-headingOther.textContent="Your typing speed is ";
-const span2=document.createElement('span');
-span2.textContent=typingSpeed+" WPM";
-headingOther.append(span2)
-
-
-const resultStats=document.createElement("div");
-resultStats.id="resultStats";
-const wordsResult=document.createElement("div");
-wordsResult.id="wordsResult"
-const resultHeading1=document.createElement("h3");
-resultHeading1.textContent=`WPM : ${typingSpeed}`
-wordsResult.append(resultHeading1)
-const accuracyResult=document.createElement("div");
-accuracyResult.id="accuracyResult"
-const resultHeading2=document.createElement("h3");
-resultHeading2.textContent=`Accuracy : 94%`
-accuracyResult.append(resultHeading2)
-const timeTaken=document.createElement("div");
-timeTaken.id="timeTaken"
-const resultHeading3=document.createElement("h3");
-resultHeading3.textContent=`Time : ${timeDuration}`
-timeTaken.append(resultHeading3)
-
-const resultCloseBtn = document.createElement("button");
-const resultCloseBtnIcon = document.createElement("i");
-resultCloseBtnIcon.classList.add("fa-solid", "fa-x");
-resultCloseBtn.id="resultCloseBtn";
-resultCloseBtn.append(resultCloseBtnIcon);
-
-
-
-resultStats.append(wordsResult,accuracyResult,timeTaken);
-resultDiv.append(heading2,resultStats,headingOther,resultCloseBtn)
-document.body.append(resultDiv);
-
-
-const gifDiv=document.createElement("div");
-gifDiv.id="gifDiv";
-
-
-document.body.append(gifDiv);
-
-
-
-
+const gifDiv=document.querySelector("#gifDiv");
 // Adding event listener on result close button
+const resultCloseBtn=document.querySelector("#resultCloseBtn");
 resultCloseBtn.addEventListener("click",()=>{
     gifDiv.style.display="none";
     resultCloseBtn.parentElement.remove();
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -66,6 +66,51 @@
     <!-- Input section -->
 
    <div class="textDisplay" >
+    <div class="overlayDiv" id="overlayDiv"></div>
+    <div class="gifDiv" id="gifDiv"></div>
+    <!-- Result div -->
+    <div class="resultDiv" id="resultDiv">
+        <h2 class="resultHeading1">
+            You're a <span></span>
+        </h2>
+        <div id="resultStats" class="resultStats">
+            <div id="wordsResult">
+                <h3>Speed : <span>54</span> WPM</h3>
+            </div>
+            <div id="accuracyResult">
+                 <h3>Accuracy : <span>94</span> %</h3>
+            </div>
+            <div id="timeTaken">
+                 <h3>Time : <span>60</span> sec</h3>
+            </div>
+        </div>
+        <h2 class="resultHeading2">
+            Your typing speed is <span></span> WPM
+        </h2>
+        <button id="resultCloseBtn" class="resultCloseBtn">
+            <i class="fa-solid fa-x"></i>
+        </button>
+    </div>
+    <!-- popup Div -->
+     <div class="popup" id="popup">
+        <button id="popCloseBtn">
+             <i class="fa-solid fa-x"></i>
+        </button>
+        <h1 class="popup-heading" id="popupHeading">Welcome to Typing Test</h1>
+        <p class="popup-para" id="popupPara">Test your typing skills with 30 sec, 60 sec, 120 sec and custom time duration.</p>
+        <h2 class="popHeading2" id="popHeading2">Tell us more about yourself</h2>
+        <input type="text" placeholder="Enter your name"  required class="popInput" id="popInput">
+        <div class="difficultyDiv" id="difficultyDiv">
+            <h3>Select Difficulty:</h3>
+            <select id="difficulty">
+                <option  selected required disabled value="select">Select Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+        <button class="startBtn" id="startBtn">Proceed</button>
+     </div>
     
 </div>
     <input type="text"  class="typingDiv">
