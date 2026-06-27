@@ -103,10 +103,6 @@ customButton.addEventListener('click',(e)=>{
 
 
 
-
-
-
-
 const overlayDiv = document.querySelector("#overlayDiv");
 const closeButton=document.querySelector("#popCloseBtn");
 closeButton.addEventListener("click",()=>{
@@ -159,29 +155,4 @@ resultCloseBtn.addEventListener("click",()=>{
     gifDiv.style.display="none";
     resultCloseBtn.parentElement.remove();
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
