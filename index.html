@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Typing Test</title>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logoHeading">TypingTest</a>
+       
+        <button class="resetButton"><i class="fa-solid fa-arrows-rotate"></i> Reset</button>
+        
+    </nav>
+    <!-- <hr> -->
+
+    <!-- Duration section -->
+
+    <section class="durationSection">
+        <h2 class="durationtext">Duration:</h2>
+        <div class="durationDivs">
+            <div type="button" class="durationDivsChild firstDurationOption">
+                30
+            </div>
+            <div class="durationDivsChild secondDurationOption">60</div>
+            <div class="durationDivsChild thirdDurationOption">120</div>
+            <div id="customDurationDiv" class="customDurationDiv">
+                <div id="customInput" class="customDurationOption" contenteditable="true"></div>
+                <button id="customButton"><i class="fa-solid fa-arrow-right"></i></button>
+
+            </div>
+        </div>
+        
+    </section>
+
+
+    
+    <!-- Stats Bar -->
+
+    <section class="statsDivs">
+        <div id="timerStat" class="Stat">
+            <div class="statName">Timer</div>
+            <div class="statValue">
+                <p><span>60</span>sec</p>
+            </div>
+        </div>
+        <div id="wordsStat" class="Stat">
+            <div class="statName">WPM</div>
+            <div class="statValue">
+                 <p><span>48</span></p>
+            </div>
+        </div>
+        <div id="accuracyStat" class="Stat">
+            <div class="statName">Accuracy</div>
+            <div class="statValue">
+                 <p><span>94</span>%</p>
+            </div>
+        </div>
+      
+    </section>
+
+
+
+    <!-- Input section -->
+
+   <div class="textDisplay" >
+    
+</div>
+    <input type="text"  class="typingDiv">
+   
+
+<!-- End of file -->
+    <script src="app.js"></script>
+</body>
+</html>
