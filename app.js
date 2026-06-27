@@ -119,7 +119,7 @@ for(let duration of durationArray){
         clearInterval(countDownTimer);
          typingSound.src="./sounds/whatsapp-send.mp3"
          typingSound.play();
-         resultDiv.style.display="block";
+         resultDiv.style.display="flex";
          gifDiv.style.display="block"
          
     }, timeDuration*1000);
@@ -151,7 +151,7 @@ customButton.addEventListener('click',(e)=>{
         clearInterval(countDownTimer);
          typingSound.src="./sounds/whatsapp-send.mp3"
          typingSound.play();
-         resultDiv.style.display="block";
+         resultDiv.style.display="flex";
          gifDiv.style.display="block"
          
     }, timeDuration*1000);
@@ -163,7 +163,7 @@ customButton.addEventListener('click',(e)=>{
 const overlayDiv = document.querySelector("#overlayDiv");
 const closeButton=document.querySelector("#popCloseBtn");
 closeButton.addEventListener("click",()=>{
-    closeButton.parentElement.remove();
+    closeButton.parentElement.style.display="none";
     overlayDiv.remove();
 })
 const startBtn=document.querySelector("#startBtn");
@@ -194,6 +194,6 @@ const gifDiv=document.querySelector("#gifDiv");
 const resultCloseBtn=document.querySelector("#resultCloseBtn");
 resultCloseBtn.addEventListener("click",()=>{
     gifDiv.style.display="none";
-    resultCloseBtn.parentElement.remove();
+    resultCloseBtn.parentElement.style.display="none";
 })
 
