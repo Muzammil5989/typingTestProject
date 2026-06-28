@@ -214,32 +214,37 @@ hr{
 }
 
 /* Input section */
-.textDisplay{
-    margin:26px auto;
+#typing{
+    position: relative;
     width:85%;
-    border:1px solid cyan;
-    font-size:28px;
-    padding:18px 36px;
     height:130px;
-    overflow: hidden;
-    border-radius: 8px;
-    text-align: center;
+    margin:0 auto;
+    background-color: gainsboro;
 }
+.textDisplay{
+    font-size:28px;
+    opacity:0.4;
+    position: absolute;
+    height:100%;
+    width: 100%;
+    padding:18px 36px;
+}
+
 .typingDiv{
-    background-color: cadetblue;
-    width:85%;
-    padding:22px 48px;
     outline:none;
-    color:white;
+    color:deeppink;
     font-size:24px;
     display: block;
-    margin:18px auto;
     border:none;
     outline:none;
-    border-radius:8px;
     font-size:28px;
     caret-color: crimson;
+    position: absolute;
+    height:100%;
+    width: 100%;
+    padding:18px 36px;
 
+    
 }
 
 
