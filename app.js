@@ -9,12 +9,17 @@ for (let i = 0; i < arr1.length; i++) {
 }
 const alphaArray = wordsArray.flat(Infinity);
 
-console.log(wordsArray);
+
 
 const wordDiv = document.querySelector(".textDisplay");
 const inputDiv = document.querySelector(".typingDiv");
 
-function fillWordContainer() {
+
+
+let wordsToType=[];
+let totalWords;
+
+function fillWordContainer(callback) {
     const startIdx = Math.floor(Math.random() * (247 - 50))
     const endIdx = startIdx + 50
 
@@ -41,39 +46,19 @@ function fillWordContainer() {
         fragment.appendChild(wordSpan)
     }
     wordDiv.appendChild(fragment);
-}
-fillWordContainer();
-
-
-function checkAndCompare(input){
-
+    totalWords=wordDiv.children.length;
     
-    wordDiv.children[currentIndex].children[words].style.transition="all 0.1s ease-in";
-    if(input==" " && input==wordDiv.children[currentIndex].children[words].textContent){
-       console.log("space printed");
-        typingSound.src="./sounds/2.mp3"
-        typingSound.play();
-       currentIndex++;
-       words=0;
-    }
-    else if(input==wordDiv.children[currentIndex].children[words].textContent){
-        wordDiv.children[currentIndex].children[words].style.color="green";
-        words++;
-         typingSound.src="./sounds/2.mp3"
-        typingSound.play();
-        console.log("input matched successfully");
-        
-    }else{
-        typingSound.src="./sounds/typing-error.mp3"
-        typingSound.play();
-        wordDiv.children[currentIndex].children[words].style.color="red";
-        wordDiv.children[currentIndex].children[words].style.backgroundColor="black";
-        wordDiv.children[currentIndex].children[words].style.display = "inline-block";
-        wordDiv.children[currentIndex].children[words].style.transform="scale(1.3)";
-         console.log("wrong input");
-    }
 
+    document.querySelectorAll(".letter, .space").forEach(el => {
+    el.style.opacity = "0.5";
+});
+
+    callback();
 }
+fillWordContainer(pushWordsArray);
+
+
+
 let timerStatDiv=document.querySelector('#timerStat');
 let timer = document.querySelector('#timerStat>.statValue>p>span');
 timer.style.transition="all 0.2s ease-in";
@@ -116,6 +101,7 @@ let words=0;
 let timerStarted = false;
 inputDiv.addEventListener("input",(e)=>{
     let input=e.data;
+    console.log(input);
    
     checkAndCompare(input);
     if (!timerStarted) {
@@ -139,6 +125,9 @@ inputDiv.addEventListener("input",(e)=>{
              typingSound.play();
              resultDiv.style.display="flex";
              gifDiv.style.display="block"
+             document.querySelector("#speedResult").textContent=wordCount;
+             resultHeadingSpan2.textContent=wordCount;
+             document.querySelector("#resultAccuracy").textContent=((wordCount/totalWords)*100).toFixed(0);
              
         }, timeDuration*1000);
         
@@ -146,16 +135,73 @@ inputDiv.addEventListener("input",(e)=>{
     
 })
 
+
+// Tracking words and characters
+let wordCount=0;
+let characterCount=0;
+
+function pushWordsArray(){
+    for (let i=0;i<wordDiv.children.length;i++){
+        wordsToType.push(wordDiv.children[i].textContent.trim())
+    }
+}
+
+inputDiv.addEventListener("keydown",(e)=>{
+  if(e.keycode == "space"){
+
+  }
+})
+
+
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------------
+let wpm=document.querySelector("#wpm")
+function checkAndCompare(input){
+    let wordArray=[];
+    
+    wordDiv.children[currentIndex].children[words].style.transition="all 0.1s linear";
+    if(input==" " && input==wordDiv.children[currentIndex].children[words].textContent){
+       wpm.textContent=++wordCount;
+       wordArray=[];
+        typingSound.src="./sounds/2.mp3"
+        typingSound.play();
+       currentIndex++;
+       words=0;
+    }
+    else if(input==wordDiv.children[currentIndex].children[words].textContent){
+        wordDiv.children[currentIndex].children[words].style.color="green";
+        wordDiv.children[currentIndex].children[words].style.opacity="1";
+        words++;
+        document.querySelector("#characterCount").textContent=++characterCount;
+        wordArray.push(input);
+;        typingSound.src="./sounds/2.mp3"
+        typingSound.play();
+        
+    }else{
+        typingSound.src="./sounds/typing-error.mp3"
+        typingSound.play();
+        
+        wordDiv.children[currentIndex].children[words].style.opacity="1";
+        
+        wordDiv.children[currentIndex].children[words].style.color="red";
+    
+    }
+
+}
+// -----------------------------
 const overlayDiv = document.querySelector("#overlayDiv");
 const closeButton=document.querySelector("#popCloseBtn");
 closeButton.addEventListener("click",()=>{
     closeButton.parentElement.style.display="none";
-    overlayDiv.remove();
+    overlayDiv.style.display="none";
 })
 const startBtn=document.querySelector("#startBtn");
 startBtn.addEventListener("click",()=>{
     startBtn.parentElement.remove();
-    overlayDiv.remove();
+    overlayDiv.style.display="none";
 
 })
 
@@ -167,19 +213,19 @@ startBtn.addEventListener("click",()=>{
 
 // Result div popup section
 const resultDiv=document.querySelector("#resultDiv");
-let typingSpeed=34;
 const resultHeadingSpan1=document.querySelector(".resultHeading1>span");
 const resultHeadingSpan2=document.querySelector(".resultHeading2>span");
 
 let typingCharacter="Turtle"
 resultHeadingSpan1.textContent=typingCharacter;
-resultHeadingSpan2.textContent=typingSpeed;
-
-const gifDiv=document.querySelector("#gifDiv");
+resultHeadingSpan2.textContent="--";
+// ---------------------------------------------------------------------------------------------------------------
 // Adding event listener on result close button
+const gifDiv=document.querySelector("#gifDiv");
 const resultCloseBtn=document.querySelector("#resultCloseBtn");
 resultCloseBtn.addEventListener("click",()=>{
     gifDiv.style.display="none";
     resultCloseBtn.parentElement.style.display="none";
+    overlayDiv.style.display="block";
 })
 

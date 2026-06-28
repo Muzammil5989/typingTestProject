@@ -223,19 +223,20 @@ hr{
 }
 .textDisplay{
     font-size:28px;
-    opacity:0.4;
+    opacity:1;
     position: absolute;
     height:100%;
     width: 100%;
     padding:18px 36px;
+    overflow: hidden;
 }
 
 .typingDiv{
     outline:none;
-    color:deeppink;
     font-size:24px;
     display: block;
     border:none;
+    color:transparent;
     outline:none;
     font-size:28px;
     caret-color: crimson;
@@ -243,8 +244,6 @@ hr{
     height:100%;
     width: 100%;
     padding:18px 36px;
-
-    
 }
 
 

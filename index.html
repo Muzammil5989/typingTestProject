@@ -53,13 +53,13 @@
         <div id="wordsStat" class="Stat">
             <div class="statName">WPM</div>
             <div class="statValue">
-                <p><span>48</span></p>
+                <p><span id="wpm">48</span></p>
             </div>
         </div>
         <div id="accuracyStat" class="Stat">
-            <div class="statName">Accuracy</div>
+            <div class="statName">Characters</div>
             <div class="statValue">
-                <p><span>94</span>%</p>
+                <p><span id="characterCount">94</span></p>
             </div>
         </div>
 
@@ -71,7 +71,7 @@
     <div id="typing">
         <div class="textDisplay"></div>
        <div contenteditable="true" class="typingDiv"></div>
-       
+
 
     </div>
     <div class="overlayDiv" id="overlayDiv"></div>
@@ -83,10 +83,10 @@
         </h2>
         <div id="resultStats" class="resultStats">
             <div id="wordsResult">
-                <h3>Speed : <span>54</span> WPM</h3>
+                <h3>Speed : <span id="speedResult" >54</span> WPM</h3>
             </div>
             <div id="accuracyResult">
-                <h3>Accuracy : <span>94</span> %</h3>
+                <h3>Accuracy : <span id="resultAccuracy">94</span> %</h3>
             </div>
             <div id="timeTaken">
                 <h3>Time : <span>60</span> sec</h3>
