@@ -45,15 +45,6 @@ function fillWordContainer() {
 fillWordContainer();
 
 
-let currentIndex=0;
-let words=0;
-inputDiv.addEventListener("input",(e)=>{
-    let input=e.data;
-   
-    checkAndCompare(input);
-    
-})
-
 function checkAndCompare(input){
 
     
@@ -103,26 +94,7 @@ for(let duration of durationArray){
         inputDiv.focus();
         clearInterval(countDownTimer);
         clearTimeout(timerOutId);
-        countDownTimer=setInterval(()=>{
-        timer.textContent-=1;
-        if(timer.textContent<=10){
-            typingSound.src="./sounds/10sec.mp3"
-            typingSound.play();
-            timerStatDiv.style.borderColor="red";
-           Array.from(timerStatDiv.children).forEach(child=>{
-            child.style.color="red"
-           });
-        }
-    },1000)
-    
-    timerOutId = setTimeout(() => {
-        clearInterval(countDownTimer);
-         typingSound.src="./sounds/whatsapp-send.mp3"
-         typingSound.play();
-         resultDiv.style.display="flex";
-         gifDiv.style.display="block"
-         
-    }, timeDuration*1000);
+        inputDiv.focus();
         
     })
 }
@@ -135,30 +107,44 @@ customButton.addEventListener('click',(e)=>{
     clearInterval(countDownTimer);
     clearTimeout(timerOutId);
     inputDiv.focus();
-    countDownTimer=setInterval(()=>{
-        timer.textContent-=1;
-        if(timer.textContent<=10){
-            typingSound.src="./sounds/10sec.mp3"
-            typingSound.play();
-            timerStatDiv.style.borderColor="red";
-           Array.from(timerStatDiv.children).forEach(child=>{
-            child.style.color="red"
-           }); 
-        }
-    },1000)
     
-    timerOutId = setTimeout(() => {
-        clearInterval(countDownTimer);
-         typingSound.src="./sounds/whatsapp-send.mp3"
-         typingSound.play();
-         resultDiv.style.display="flex";
-         gifDiv.style.display="block"
-         
-    }, timeDuration*1000);
 
 })  
 
+let currentIndex=0;
+let words=0;
+let timerStarted = false;
+inputDiv.addEventListener("input",(e)=>{
+    let input=e.data;
+   
+    checkAndCompare(input);
+    if (!timerStarted) {
+        timerStarted = true;
 
+        countDownTimer=setInterval(()=>{
+            timer.textContent-=1;
+            if(timer.textContent<=10){
+                typingSound.src="./sounds/10sec.mp3"
+                typingSound.play();
+                timerStatDiv.style.borderColor="red";
+               Array.from(timerStatDiv.children).forEach(child=>{
+                child.style.color="red"
+               }); 
+            }
+        },1000)
+        
+        timerOutId = setTimeout(() => {
+            clearInterval(countDownTimer);
+             typingSound.src="./sounds/whatsapp-send.mp3"
+             typingSound.play();
+             resultDiv.style.display="flex";
+             gifDiv.style.display="block"
+             
+        }, timeDuration*1000);
+        
+    }
+    
+})
 
 const overlayDiv = document.querySelector("#overlayDiv");
 const closeButton=document.querySelector("#popCloseBtn");
